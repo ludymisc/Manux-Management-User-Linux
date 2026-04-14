@@ -330,7 +330,6 @@ body{
   margin-top:1px;
 }
 
-/* ================= BAR ================= */
 .bar-wrap{
   display:flex;
   flex-direction:column;
@@ -370,7 +369,6 @@ body{
   text-align:right;
 }
 
-/* warna progress (tidak diubah) */
 .bar-fill[style*="80%"]{background:var(--green);}
 .bar-fill[style*="50%"]{background:var(--orange);}
 .bar-fill[style*="35%"]{background:var(--red);}
@@ -381,7 +379,6 @@ body{
   gap:12px;
 }
 
-/* pastikan card tidak full width paksa */
 .two-col > *{
   min-width:0;
 }
