@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MANUX Dashboard Wireframe</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+function sendPrompt(text){
+  alert("Action: " + text);
+}
+
+// Tambah user (simulasi)
+document.querySelectorAll('.btn-sm')[0].addEventListener('click', function(){
+  const name = prompt("Masukkan nama user:");
+  if(!name) return;
+
+  const container = document.querySelector('.card .user-row').parentNode;
+
+  const newUser = document.createElement('div');
+  newUser.className = 'user-row';
+  newUser.innerHTML = `
+    <div class="uavatar ua-blue">${name[0].toUpperCase()}</div>
+    <div>
+      <div class="uname">${name}</div>
+      <div class="urole">viewer</div>
+    </div>
+    <span class="ustatus s-online">online</span>
+  `;
+
+  container.appendChild(newUser);
+});
+
+// Toggle permission (klik rwx)
+document.querySelectorAll('.bit').forEach(bit => {
+  bit.addEventListener('click', () => {
+    if(bit.classList.contains('on')){
+      bit.classList.remove('on');
+      bit.classList.add('off');
+      bit.textContent = '-';
+    } else {
+      bit.classList.remove('off');
+      bit.classList.add('on');
+      bit.textContent = bit.textContent === '-' ? 'r' : bit.textContent;
+    }
+  });
+});
+
+// Klik user (highlight)
+document.querySelectorAll('.user-row').forEach(row => {
+  row.addEventListener('click', () => {
+    document.querySelectorAll('.user-row').forEach(r => r.style.background='');
+    row.style.background = '#1a1f2b';
+  });
+});
+</script>
+</head>
+<body>
+<div class="shell">
+
+  <div class="topbar">
+    <div class="topbar-brand">
+      <div class="brand-dot"></div>
+      MANUX
+      <span style="font-size:11px;color:var(--text-secondary);font-weight:400;">Management User Linux</span>
+    </div>
+    <div class="topbar-right">
+      <span class="topbar-time">Mon 14 Apr 2025 — 09:41</span>
+      <div class="avatar">AD</div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="nav-label">Menu</div>
+    <div class="nav-item active">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>
+      Dashboard
+    </div>
+    <div class="nav-item">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5" r="3"/><path d="M2 13c0-3 2.7-5 6-5s6 2 6 5"/></svg>
+      User Management
+    </div>
+    <div class="nav-item">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5" cy="8" r="3"/><circle cx="11" cy="8" r="3"/></svg>
+      Group Management
+    </div>
+    <div class="nav-item">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/></svg>
+      Permissions
+    </div>
+    <div class="nav-item">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
+      Activity Log
+      <span class="nav-badge">3</span>
+    </div>
+    <div class="nav-label" style="margin-top:8px;">System</div>
+    <div class="nav-item">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v2M8 12v2M2 8h2M12 8h2"/><circle cx="8" cy="8" r="3"/></svg>
+      Settings
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total users</div>
+          <div class="stat-val">24</div>
+          <div class="stat-sub up">+2 minggu ini</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Online sekarang</div>
+          <div class="stat-val">9</div>
+          <div class="stat-sub up">37% dari total</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total groups</div>
+          <div class="stat-val">6</div>
+          <div class="stat-sub" style="color:var(--text-secondary);">admin, dev, ops...</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Alert aktif</div>
+          <div class="stat-val" style="color:#A32D2D;">3</div>
+          <div class="stat-sub down">Perlu ditinjau</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col">
+
+      <div class="card">
+        <div class="card-head">
+          <span class="card-head-title">Daftar user</span>
+          <button class="btn-sm" onclick="sendPrompt('Buatkan wireframe halaman User Management lengkap dengan form tambah user, tabel, dan tombol edit/delete untuk MANUX ↗')">+ Tambah user ↗</button>
+        </div>
+        <div class="user-row">
+          <div class="uavatar ua-blue">AD</div>
+          <div><div class="uname">admin</div><div class="urole">root / superuser</div></div>
+          <span class="ustatus s-online">online</span>
+        </div>
+        <div class="user-row">
+          <div class="uavatar ua-teal">MK</div>
+          <div><div class="uname">mukgot</div><div class="urole">dev</div></div>
+          <span class="ustatus s-online">online</span>
+        </div>
+        <div class="user-row">
+          <div class="uavatar ua-amber">SF</div>
+          <div><div class="uname">safani</div><div class="urole">ops</div></div>
+          <span class="ustatus s-idle">idle</span>
+        </div>
+        <div class="user-row">
+          <div class="uavatar ua-purple">ML</div>
+          <div><div class="uname">malik</div><div class="urole">dev</div></div>
+          <span class="ustatus s-offline">offline</span>
+        </div>
+        <div class="user-row">
+          <div class="uavatar ua-coral">EL</div>
+          <div><div class="uname">elpa</div><div class="urole">viewer</div></div>
+          <span class="ustatus s-offline">offline</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <span class="card-head-title">Permission control</span>
+          <button class="btn-sm" onclick="sendPrompt('Buatkan wireframe halaman Permission Control MANUX dengan tabel rwx, toggle permission, dan simulasi chmod ↗')">Edit ↗</button>
+        </div>
+        <div class="perm-row">
+          <span class="perm-name" style="font-size:11px;color:var(--text-secondary);">user/file</span>
+          <div class="perm-bits">
+            <span class="bit on">r</span><span class="bit on">w</span><span class="bit on">x</span>
+            <span style="font-size:11px;color:var(--color-text-tertiary);padding:0 2px;">|</span>
+            <span class="bit on">r</span><span class="bit on">w</span><span class="bit off">-</span>
+            <span style="font-size:11px;color:var(--color-text-tertiary);padding:0 2px;">|</span>
+            <span class="bit on">r</span><span class="bit off">-</span><span class="bit off">-</span>
+          </div>
+        </div>
+        <div class="perm-row">
+          <span class="perm-name">admin</span>
+          <div class="perm-bits"><span class="bit on">r</span><span class="bit on">w</span><span class="bit on">x</span><span style="font-size:11px;color:var(--color-text-tertiary);padding:0 2px;">|</span><span class="bit on">r</span><span class="bit on">w</span><span class="bit on">x</span><span style="font-size:11px;color:var(--color-text-tertiary);padding:0 2px;">|</span><span class="bit on">r</span><span class="bit off">-</span><span class="bit off">-</span></div>
+        </div>
+        <div class="perm-row">
+          <span class="perm-name">mukgot</span>
+          <div class="perm-bits"><span class="bit on">r</span><span class="bit on">w</span><span class="bit on">x</span><span style="font-size:11px;color:var(--color-text-tertiary);padding:0 2px;">|</span><span class="bit on">r</span><span class="bit off">-</span><span class="bit off">-</span><span style="font-size:11px;color:var(--color-text-tertiary);padding:0 2px;">|</span><span class="bit off">-</span><span class="bit off">-</span><span class="bit off">-</span></div>
+        </div>
+        <div class="perm-row">
+          <span class="perm-name">safani</span>
+          <div class="perm-bits"><span class="bit on">r</span><span class="bit on">w</span><span class="bit off">-</span><span style="font-size:11px;color:var(--color-text-tertiary);padding:0 2px;">|</span><span class="bit on">r</span><span class="bit off">-</span><span class="bit off">-</span><span style="font-size:11px;color:var(--color-text-tertiary);padding:0 2px;">|</span><span class="bit off">-</span><span class="bit off">-</span><span class="bit off">-</span></div>
+        </div>
+        <div class="perm-row">
+          <span class="perm-name">elpa</span>
+          <div class="perm-bits"><span class="bit on">r</span><span class="bit off">-</span><span class="bit off">-</span><span style="font-size:11px;color:var(--color-text-tertiary);padding:0 2px;">|</span><span class="bit off">-</span><span class="bit off">-</span><span class="bit off">-</span><span style="font-size:11px;color:var(--color-text-tertiary);padding:0 2px;">|</span><span class="bit off">-</span><span class="bit off">-</span><span class="bit off">-</span></div>
+        </div>
+        <div style="margin-top:10px;padding-top:10px;border-top:0.5px solid var(--color-border-tertiary);">
+          <div class="bar-wrap">
+            <div class="bar-row">
+              <span class="bar-label">Read</span>
+              <div class="bar-track"><div class="bar-fill" style="width:80%;background:#639922;"></div></div>
+              <span class="bar-val">80%</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Write</span>
+              <div class="bar-track"><div class="bar-fill" style="width:50%;background:#BA7517;"></div></div>
+              <span class="bar-val">50%</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Execute</span>
+              <div class="bar-track"><div class="bar-fill" style="width:35%;background:#E24B4A;"></div></div>
+              <span class="bar-val">35%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <span class="card-head-title">Activity log</span>
+        <button class="btn-sm" onclick="sendPrompt('Buatkan wireframe halaman Activity Log lengkap untuk MANUX dengan filter tanggal, filter user, dan export log ↗')">Lihat semua ↗</button>
+      </div>
+      <div class="log-row">
+        <div class="log-dot ld-err"></div>
+        <div><div class="log-msg">Login gagal 3x — user <span style="font-family:var(--font-mono);font-size:11px;">malik</span> (IP: 192.168.1.45)</div><div class="log-time">09:38 — Hari ini</div></div>
+      </div>
+      <div class="log-row">
+        <div class="log-dot ld-warn"></div>
+        <div><div class="log-msg">Permission diubah — <span style="font-family:var(--font-mono);font-size:11px;">/etc/passwd</span> oleh <span style="font-family:var(--font-mono);font-size:11px;">admin</span></div><div class="log-time">09:21 — Hari ini</div></div>
+      </div>
+      <div class="log-row">
+        <div class="log-dot ld-ok"></div>
+        <div><div class="log-msg">User baru dibuat — <span style="font-family:var(--font-mono);font-size:11px;">elpa</span> ditambahkan ke group <span style="font-family:var(--font-mono);font-size:11px;">viewer</span></div><div class="log-time">08:55 — Hari ini</div></div>
+      </div>
+      <div class="log-row">
+        <div class="log-dot ld-info"></div>
+        <div><div class="log-msg">Login berhasil — <span style="font-family:var(--font-mono);font-size:11px;">mukgot</span> masuk dari terminal</div><div class="log-time">08:41 — Hari ini</div></div>
+      </div>
+      <div class="log-row">
+        <div class="log-dot ld-ok"></div>
+        <div><div class="log-msg">Group baru dibuat — <span style="font-family:var(--font-mono);font-size:11px;">ops</span> oleh <span style="font-family:var(--font-mono);font-size:11px;">admin</span></div><div class="log-time">Kemarin — 22:10</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
