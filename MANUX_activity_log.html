@@ -48,11 +48,14 @@
             </div>
         </div>
         <div class="content">
-            <div class="page-header">
+            <div class="stat">
+                <div class="page-header">
+                <div class="stat-card">
                 <div>
                 <div class="page-title">Activity log</div>
                 <div class="page-sub">Semua aktivitas sistem — login, perubahan user/group, permission</div>
                 </div>
+            </div>
                 <div class="hdr-actions">
                 <button class="btn" onclick="doExport()">
                     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v8M5 7l3 3 3-3"/><path d="M3 12h10"/></svg>
@@ -66,39 +69,51 @@
                     User Management ↗
                 </button>
                 </div>
+                </div>
             </div>
             <div id="export-toast" class="export-toast">File berhasil dieksport! (simulasi wireframe)</div>
-                <div class="stat-row">
-                    <div class="sc">
-                    <div class="sc-lbl">Total log hari ini</div>
-                    <div class="sc-val" id="s-total">18</div>
-                    <div class="sc-sub" style="color:var(--text-secondary);">sejak 00:00</div>
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="sc">
+                        <div class="sc-lbl">Total log hari ini</div>
+                        <div class="sc-val" id="s-total">18</div>
+                        <div class="sc-sub" style="color:var(--text-secondary);">sejak 00:00</div>
+                        </div>
                     </div>
-                    <div class="sc">
-                    <div class="sc-lbl">Error / warning</div>
-                    <div class="sc-val" style="color:#A32D2D;" id="s-err">5</div>
-                    <div class="sc-sub" style="color:#791F1F;">perlu ditinjau</div>
+                    <div class="stat-card">
+                        <div class="sc">
+                        <div class="sc-lbl">Error / warning</div>
+                        <div class="sc-val" style="color:#A32D2D;" id="s-err">5</div>
+                        <div class="sc-sub" style="color:#A32D2D;">perlu ditinjau</div>
+                        </div>
                     </div>
-                    <div class="sc">
-                    <div class="sc-lbl">Login berhasil</div>
-                    <div class="sc-val" style="color:#27500A;" id="s-ok">9</div>
-                    <div class="sc-sub" style="color:#27500A;">sesi aktif: 4</div>
+                    <div class="stat-card">
+                        <div class="sc">
+                        <div class="sc-lbl">Login berhasil</div>
+                        <div class="sc-val" style="color:#3a8b01;" id="s-ok">9</div>
+                        <div class="sc-sub" style="color:#3a8b01;">sesi aktif: 4</div>
+                        </div>
                     </div>
-                    <div class="sc">
-                    <div class="sc-lbl">Perubahan sistem</div>
-                    <div class="sc-val" id="s-change">4</div>
-                    <div class="sc-sub" style="color:var(--text-secondary);">user, group, perm</div>
+                    <div class="stat-card">
+                        <div class="sc">
+                        <div class="sc-lbl">Perubahan sistem</div>
+                        <div class="sc-val" id="s-change">4</div>
+                        <div class="sc-sub" style="color:var(--text-secondary);">user, group, perm</div>
+                        </div>
                     </div>
                 </div>
-
+                <div class="stat-card">
                 <div class="filter-bar">
                     <div class="filter-group">
                     <span class="filter-lbl">Tanggal</span>
+                    <div class="stat-card">
                     <input type="date" id="f-date" value="2025-04-14" onchange="filterLogs()">
+                    </div>
                     </div>
                     <div class="filter-sep"></div>
                     <div class="filter-group">
                     <span class="filter-lbl">User</span>
+                    <div class="stat-card">
                     <select id="f-user" onchange="filterLogs()">
                         <option value="all">Semua user</option>
                         <option value="admin">admin</option>
@@ -108,9 +123,11 @@
                         <option value="elpa">elpa</option>
                     </select>
                     </div>
+                    </div>
                     <div class="filter-sep"></div>
                     <div class="filter-group">
                     <span class="filter-lbl">Tipe</span>
+                    <div class="stat-card">
                     <select id="f-type" onchange="filterLogs()">
                         <option value="all">Semua tipe</option>
                         <option value="login">Login / Logout</option>
@@ -118,6 +135,7 @@
                         <option value="permission">Permission</option>
                         <option value="group">Group</option>
                     </select>
+                    </div>
                     </div>
                     <div class="filter-sep"></div>
                     <div class="tag-row">
@@ -129,7 +147,7 @@
                     <span class="tag t-ok" id="tag-success" onclick="setSev('success')">Success</span>
                     </div>
                 </div>
-
+                </div>
                 <div style="border:0.5px solid var(--border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;">
                     <table class="log-table">
                     <thead>
