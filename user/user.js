@@ -241,7 +241,6 @@ function clearToast() {
   document.getElementById('form-toast').style.display = 'none';
 }
 
-/* ================= DELETE ================= */
 function openDelete(id) {
   const u = users.find(x => x.id === id);
   if (!u) return;
