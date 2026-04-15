@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANUX - User Management</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="user.css">
+    <link rel="icon" href="../asset/icon.png" type="image/png">
+</head>
+<body>
+    <div class="shell">
+        <div class="topbar">
+            <div style="display:flex;align-items:center;gap:16px;">
+            <div class="topbar-brand"><div class="brand-dot"></div>MANUX</div>
+            <div class="breadcrumb" style="font-size:11px;color:var(--text-secondary);font-weight:400;">Dashboard / <span >Activity Log</span></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+            <span style="font-size:11px;color:var(--text-secondary);">Mon 14 Apr 2025</span>
+            <div class="avatar">AD</div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="nav-label">Menu</div>
+            <div class="nav-item item">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>
+            Dashboard
+            </div>
+            <div class="nav-i active">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
+                User Management
+            </div>
+            <div class="nav-item">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5" cy="8" r="3"/><circle cx="11" cy="8" r="3"/></svg>
+            Group Management
+            </div>
+            <div class="nav-item">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/></svg>
+            Permissions
+            </div>
+            <div class="nav-item">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/></svg>
+            Activity Log <span class="nbadge">3</span>
+            </div>
+            <div class="nav-label" style="margin-top:8px;">System</div>
+            <div class="nav-item">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v2M8 12v2M2 8h2M12 8h2"/><circle cx="8" cy="8" r="3"/></svg>
+            Settings
+            </div>
+        </div>
+        <div class="content">
+                <div class="stat">
+                    <div class="page-header">
+                    <div class="stat-card">
+                    <div>
+                    <div class="ph" >User Management</div>
+                    <div class="ps">Kelola user, role, group, dan status akun dalam sistem</div>
+                    </div>
+                </div>
+                    <div class="hdr-actions">
+                    <button class="btn" onclick="sendPrompt('Buatkan wireframe halaman Permission Control MANUX dengan tabel rwx, toggle permission, dan simulasi chmod ↗')">Permission Control ↗</button>
+                    <button class="btn btn-blue" onclick="openAddForm()">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v10M3 8h10"/></svg>
+                        Tambah user
+                    </button>
+                    </div>
+                    </div>
+                </div>
+            <div class="stat-grid">
+                <div class="stat-card"><div class="sc-l">Total user</div><div class="sc-v" id="st-total">8</div><div class="sc-s">terdaftar di sistem</div></div>
+                <div class="stat-card"><div class="sc-l">Online</div><div class="sc-v" style="color:#27500A;" id="st-online">3</div><div class="sc-s">sesi aktif</div></div>
+                <div class="stat-card"><div class="sc-l">Admin / root</div><div class="sc-v" id="st-admin">2</div><div class="sc-s">hak akses penuh</div></div>
+                <div class="stat-card"><div class="sc-l">Baru (7 hari)</div><div class="sc-v" id="st-new">2</div><div class="sc-s">user terbaru</div></div>
+            </div>
+        <div class="stat-card" style="margin-top:16px;">
+            <div class="search-bar">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:14px;height:14px;color:var(--text-secondary);flex-shrink:0;"><circle cx="7" cy="7" r="4"/><path d="M10.5 10.5L13 13"/></svg>
+                    <input id="search-inp" placeholder="Cari username, nama, atau email..." oninput="filterTable()" style="flex:1;">
+                    <select id="filter-role" onchange="filterTable()">
+                    <option value="all">Semua role</option>
+                    <option value="admin">Admin</option>
+                    <option value="dev">Dev</option>
+                    <option value="ops">Ops</option>
+                    <option value="viewer">Viewer</option>
+                    </select>
+                    <select id="filter-status" onchange="filterTable()">
+                    <option value="all">Semua status</option>
+                    <option value="online">Online</option>
+                    <option value="idle">Idle</option>
+                    <option value="offline">Offline</option>
+                    </select>
+            </div>
+        </div>
+            <div id="main-area">
+                <div class="two-col">
+                <div class="card">
+                    <div class="card-head">
+                    <div>
+                        <div class="ph">Daftar user</div>
+                        <div class="ps" id="tbl-count">Menampilkan 8 user</div></div>
+                    </div>
+                    <table class="tbl">
+                    <thead>
+                        <tr>
+                        <th style="width:38px;"></th>
+                        <th class="ps" style="width:110px;">Username</th>
+                        <th class="ps" style="width:70px;">Group</th>
+                        <th class="ps" style="width:65px;">Status</th>
+                        <th class="ps" style="width:80px;">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="user-tbody"></tbody>
+                    </table>
+                </div>
+                <div class="stat-card" id="form-panel">
+                    <div class="form-head" id="form-head-title">
+                        <div class="ph" id="form-title">Tambah user baru</div>
+                        <div class="ps">Isi data user yang akan ditambahkan ke sistem</div>
+                    </div>
+                    <div class="form-body">
+                        <div>
+                            <div class="ps">Username *</div>
+                            <input class="fi" id="f-username" placeholder="contoh: zaky_dev" oninput="validateForm()">
+                        </div>
+                        <div>
+                            <div class="ps">Nama lengkap *</div>
+                            <input class="fi" id="f-fullname" placeholder="contoh: Zaky Aditya Susanto" oninput="validateForm()">
+                        </div>
+                        <div>
+                            <div class="ps">Email</div>
+                            <input class="fi" id="f-email" placeholder="contoh: zaky@manux.dev" type="email">
+                        </div>
+                        <div class="form-row">
+                            <div>
+                            <div class="ps">Group *</div>
+                            <select class="fi" id="f-role">
+                                <option value="">Pilih Group...</option>
+                                <option value="admin">Admin</option>
+                                <option value="dev">Dev</option>
+                                <option value="ops">Ops</option>
+                                <option value="viewer">Viewer</option>
+                            </select>
+                            </div>
+                            <div>
+                        </div>
+                        <div>
+                            <div class="ps">Password sementara *</div>
+                            <input class="fi" id="f-pass" placeholder="min. 8 karakter" type="password" oninput="validateForm()">
+                        </div>
+                        <div id="form-toast" class="toast"></div>
+                        <div class="form-footer">
+                            <button class="btn btn-green" id="btn-submit" onclick="submitForm()" style="flex:1;">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px;"><path d="M3 8l4 4 6-7"/></svg>
+                            <span id="btn-submit-label">Tambah user</span>
+                            </button>
+                            <button class="btn" onclick="resetForm()">Batal</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="delete-modal" style="display:none;">
+                <div class="modal-overlay">
+                <div class="modal">
+                    <div class="modal-title">Hapus user ini?</div>
+                    <div class="modal-sub">User <strong id="del-uname" style="color:var(--text-primary);"></strong> akan dihapus dari sistem. Semua data dan hak akses terkait juga ikut dihapus. Aksi ini tidak bisa dibatalkan.</div>
+                    <div class="modal-btns">
+                    <button class="btn" onclick="closeDelete()">Batal</button>
+                    <button class="btn btn-red" onclick="confirmDelete()">
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px;"><path d="M3 3l10 10M13 3L3 13"/></svg>
+                        Ya, hapus
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="user.js"></script>
+</body>
+</html>
