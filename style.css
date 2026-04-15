@@ -94,6 +94,15 @@ body{
   padding:12px 0;
 }
 
+.sidebar a {
+  text-decoration: none;
+  color: inherit; /* ikut warna parent */
+}
+
+.sidebar a:hover {
+  text-decoration: none;
+}
+
 .nav-label{
   font-size:10px;
   font-weight:500;

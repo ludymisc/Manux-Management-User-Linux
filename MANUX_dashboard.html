@@ -71,29 +71,29 @@ document.querySelectorAll('.user-row').forEach(row => {
     <div class="nav-label">Menu</div>
     <div class="nav-item active">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>
-      Dashboard
+      <a href="MANUX_dashboard.html" >Dashboard</a>
     </div>
     <div class="nav-item">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5" r="3"/><path d="M2 13c0-3 2.7-5 6-5s6 2 6 5"/></svg>
-      User Management
+      <a href="user/MANUX_user_management.html" >User Management</a>
     </div>
     <div class="nav-item">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5" cy="8" r="3"/><circle cx="11" cy="8" r="3"/></svg>
-      Group Management
+      <a href="/grup/MANUX_group_management.html" >Group Management</a>
     </div>
     <div class="nav-item">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/></svg>
-      Permissions
+      <a href="MANUX_permissions.html" >Permissions</a>
     </div>
     <div class="nav-item">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
-      Activity Log
+      <a href="MANUX_activity_log.html" >Activity Log</a>
       <span class="nav-badge">3</span>
     </div>
     <div class="nav-label" style="margin-top:8px;">System</div>
     <div class="nav-item">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v2M8 12v2M2 8h2M12 8h2"/><circle cx="8" cy="8" r="3"/></svg>
-      Settings
+      <a href="MANUX_system_settings.html" >Settings</a>
     </div>
   </div>
 
@@ -129,7 +129,7 @@ document.querySelectorAll('.user-row').forEach(row => {
       <div class="card">
         <div class="card-head">
           <span class="card-head-title">Daftar user</span>
-          <button class="btn-sm" onclick="sendPrompt('Buatkan wireframe halaman User Management lengkap dengan form tambah user, tabel, dan tombol edit/delete untuk MANUX ↗')">+ Tambah user ↗</button>
+          <button class="btn-sm" onclick="location.href='user/MANUX_user_management.html'">+ Tambah user ↗</button>
         </div>
         <div class="user-row">
           <div class="uavatar ua-blue">AD</div>
@@ -161,7 +161,7 @@ document.querySelectorAll('.user-row').forEach(row => {
       <div class="card">
         <div class="card-head">
           <span class="card-head-title">Permission control</span>
-          <button class="btn-sm" onclick="sendPrompt('Buatkan wireframe halaman Permission Control MANUX dengan tabel rwx, toggle permission, dan simulasi chmod ↗')">Edit ↗</button>
+          <button class="btn-sm" onclick="location.href='MANUX_permissions.html'">Edit ↗</button>
         </div>
         <div class="perm-row">
           <span class="perm-name" style="font-size:11px;color:var(--text-secondary);">user/file</span>
@@ -214,7 +214,7 @@ document.querySelectorAll('.user-row').forEach(row => {
     <div class="card">
       <div class="card-head">
         <span class="card-head-title">Activity log</span>
-        <button class="btn-sm" onclick="sendPrompt('Buatkan wireframe halaman Activity Log lengkap untuk MANUX dengan filter tanggal, filter user, dan export log ↗')">Lihat semua ↗</button>
+        <button class="btn-sm" onclick="location.href='MANUX_activity_log.html'">Lihat semua ↗</button>
       </div>
       <div class="log-row">
         <div class="log-dot ld-err"></div>
