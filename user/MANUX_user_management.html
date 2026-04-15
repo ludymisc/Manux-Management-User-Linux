@@ -160,18 +160,22 @@
                 </div>
             </div>
             <div id="delete-modal" style="display:none;">
-                <div class="modal-overlay">
-                <div class="modal">
-                    <div class="modal-title">Hapus user ini?</div>
-                    <div class="modal-sub">User <strong id="del-uname" style="color:var(--text-primary);"></strong> akan dihapus dari sistem. Semua data dan hak akses terkait juga ikut dihapus. Aksi ini tidak bisa dibatalkan.</div>
-                    <div class="modal-btns">
-                    <button class="btn" onclick="closeDelete()">Batal</button>
-                    <button class="btn btn-red" onclick="confirmDelete()">
-                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px;"><path d="M3 3l10 10M13 3L3 13"/></svg>
-                        Ya, hapus
-                    </button>
+                <div class="modal-overlay" id="delete-modal">
+                    <div class="modal-card stat-card">
+                        <div class="modal-title">⚠ Hapus user ini?</div>
+                        <div class="modal-sub">
+                        User <strong id="del-uname"></strong> akan dihapus dari sistem.
+                        Semua data dan hak akses terkait juga ikut dihapus.
+                        Aksi ini tidak bisa dibatalkan.
+                        </div>
+                        <div class="modal-btns">
+                        <button class="btn" onclick="closeDelete()">Batal</button>
+                        <button class="btn btn-red" onclick="confirmDelete()">
+                            Ya, hapus
+                        </button>
+                        </div>
+
                     </div>
-                </div>
                 </div>
             </div>
         </div>

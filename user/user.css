@@ -294,6 +294,49 @@ body{
     font-weight: 500;
 }
 
+/* Overlay tetap */
+.modal-overlay {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  background: rgba(255, 255, 255, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal pakai stat-card */
+.modal-card {
+  width: 360px;
+  padding: 20px;
+  animation: fadeInScale 0.2s ease;
+}
+
+/* Title */
+.modal-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+/* Sub */
+.modal-sub {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Button area */
+.modal-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
 /* =========================
    STATUS COLOR
 ========================= */
